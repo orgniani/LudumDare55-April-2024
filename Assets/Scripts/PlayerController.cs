@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float groundedRadius = 0.5f;
     [SerializeField] private LayerMask groundLayers;
 
-    private CharacterController controller;
+    private CharacterController _controller;
 
     private float _verticalVelocity;
 
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        controller = GetComponent<CharacterController>();
+        _controller = GetComponent<CharacterController>();
     }
 
     private void Update()
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
     private void GroundedCheck()
     {
-        Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - groundedOffset, transform.position.z);
+        Vector3 spherePosition = new(transform.position.x, transform.position.y - groundedOffset, 0f);
         grounded = Physics.CheckSphere(spherePosition, groundedRadius, groundLayers, QueryTriggerInteraction.Ignore);
     }
 
@@ -71,10 +71,10 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        Vector3 moveValue = new Vector3(direction.x, 0, direction.y);
+        Vector3 moveValue = new (direction.x, 0f, 0f);
 
-        moveValue = moveValue.x * transform.right + moveValue.z * transform.forward;
+        moveValue = moveValue.x * transform.right;
 
-        controller.Move(moveValue.normalized * (moveSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+        _controller.Move(moveValue.normalized * (moveSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
     }
 }
