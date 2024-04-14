@@ -11,7 +11,11 @@ public class SummoningSystem : MonoBehaviour
 
     private bool pressedOnce = false;
 
+    private List<LineFeedback> activeLines= new List<LineFeedback>();
+    private List<LineFeedback> linesPool = new List<LineFeedback>();
+
     private List<Vector3> usedPositions = new List<Vector3>();
+
     private Vector3 addAllPos;
     [SerializeField] private Vector3 hasWonValue;
 
@@ -39,10 +43,7 @@ public class SummoningSystem : MonoBehaviour
 
             else
             {
-                LineFeedback lineFeedback = Instantiate(linePrefab, canvas.transform);
-                lineFeedback.transform.position = startPosition;
-
-                lineFeedback.ShowShotDirection(endPosition);
+                SpawnLine();
 
                 usedPositions.Add(usedPosition);
                 addAllPos += usedPosition;
@@ -54,6 +55,46 @@ public class SummoningSystem : MonoBehaviour
                 PuzzleWonCheck();
             }
         }
+    }
+
+    private void SpawnLine()
+    {
+        if (linesPool.Count == 0)
+        {
+            LineFeedback lineFeedback = Instantiate(linePrefab, canvas.transform);
+            lineFeedback.transform.position = startPosition;
+
+            lineFeedback.ShowShotDirection(endPosition);
+
+            activeLines.Add(lineFeedback);
+        }
+        else
+        {
+            var reusedLine = linesPool[0];
+            reusedLine.gameObject.SetActive(true);
+            reusedLine.transform.position = startPosition;
+            reusedLine.ShowShotDirection(endPosition);
+
+            activeLines.Add(reusedLine);
+            linesPool.Remove(reusedLine);
+        }
+    }
+
+    public void RestartPuzzle(AudioSource failAudio)
+    {
+        failAudio.Play();
+
+        pressedOnce = false;
+        addAllPos = Vector3.zero;
+        usedPositions.Clear();
+
+        foreach (var line in activeLines)
+        {
+            line.gameObject.SetActive(false);
+            linesPool.Add(line);
+        }
+
+        activeLines.Clear();
     }
 
     private void ResetState()
