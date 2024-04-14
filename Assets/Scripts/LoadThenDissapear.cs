@@ -16,7 +16,7 @@ public class LoadThenDissapear : MonoBehaviour
     }
     private void OnEnable()
     {
-        image.fillAmount = 0;
+        image.fillAmount = 1;
         StartCoroutine(FillImageWithTime());
     }
 
@@ -25,7 +25,7 @@ public class LoadThenDissapear : MonoBehaviour
         while (time < cooldownTime)
         {
             time += Time.deltaTime;
-            image.fillAmount = time/cooldownTime;
+            image.fillAmount = (1 - time/cooldownTime);
             yield return null;
         }
         time = 0.0f;
