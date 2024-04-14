@@ -61,9 +61,6 @@ public class SummonZone : MonoBehaviour
 
     private IEnumerator SummoningCoroutine()
     {
-        _canBeSummoned = false;
-        playerManager.RemoveInactiveSummonZone(_summonType);
-
         spell.Summon();
         // TODO: could be replaced by waitForAnimation in SummonSpell::Summon?
         yield return new WaitForSeconds(summonDuration);
@@ -76,8 +73,7 @@ public class SummonZone : MonoBehaviour
         if(other.name == "Player")
         {
             Debug.Log($"{name}: Player entered trigger, summon enabled.");
-            _canBeSummoned = true;
-            playerManager.AddActiveSummonZone(_summonType, this);
+            EnableSummon();
         }
     }
 
@@ -87,8 +83,7 @@ public class SummonZone : MonoBehaviour
         if (other.name == "Player")
         {
             Debug.Log($"{name}: Player exited trigger, summon disabled.");
-            _canBeSummoned = false;
-            playerManager.RemoveInactiveSummonZone(_summonType);
+            DisableSummon();
         }
     }
 
@@ -96,5 +91,17 @@ public class SummonZone : MonoBehaviour
     {
         Debug.Log($"{name}: Missing reference to {missingRefName}. Component will be disabled.");
         enabled = false;
+    }
+
+    private void EnableSummon()
+    {
+        _canBeSummoned = true;
+        playerManager.AddActiveSummonZone(_summonType, this);
+    }
+
+    private void DisableSummon()
+    {
+        _canBeSummoned = false;
+        playerManager.RemoveInactiveSummonZone(_summonType);
     }
 }
