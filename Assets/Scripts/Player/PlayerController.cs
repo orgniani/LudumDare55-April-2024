@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -31,7 +28,6 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-
         if (groundLayers.value == 0)
         {
             Debug.LogError($"{name}: Select a LayerMask.\nDisabling component.");
