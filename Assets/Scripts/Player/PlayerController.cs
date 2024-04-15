@@ -1,9 +1,12 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Player Movement")]
-    [SerializeField] private float moveSpeed = 0f;
+    [SerializeField] private float moveSpeed = 4.0f;
 
     [Space(10)]
     [SerializeField] private float jumpHeight = 1.2f;
@@ -25,17 +28,18 @@ public class PlayerController : MonoBehaviour
     public float _currentSlideSpeed = 0.0f;
     private float previousDirection = 0f;
 
-    private CharacterController _controller;
+    private CharacterController controller;
+    private Animator characterAnimator;
 
     private bool grounded = true;
     private bool onIce;
 
-    private bool jump;
+    public bool jump;
     public bool Jump { set { jump = value; } }
 
     private Vector2 direction;
-
     public Vector2 Direction { set { direction = value; } }
+
 
     private void Awake()
     {
@@ -50,15 +54,15 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        _controller = GetComponent<CharacterController>();
+        controller = GetComponent<CharacterController>();
+        characterAnimator = GetComponent<Animator>();
     }
 
     private void Update()
     {
         GroundedCheck();
         JumpAndGravity();
-
-        if(!onIce)
+        if (!onIce)
         {
             Move();
         }
@@ -76,31 +80,54 @@ public class PlayerController : MonoBehaviour
         onIce = Physics.CheckSphere(spherePosition, groundedRadius, iceLayer, QueryTriggerInteraction.Ignore);
     }
 
-    private void JumpAndGravity()
+    public void JumpAndGravity()
     {
-        if (grounded && jump)
-            _verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        if ((grounded || onIce) && jump)
+        {
+            characterAnimator.SetBool("isJumping", true);
+        }
         else
             jump = false;
 
         if (_verticalVelocity < terminalVelocity)
+        {
             _verticalVelocity += gravity * Time.deltaTime;
+        }
     }
 
-        private void Move()
+    private void Move()
     {
-        Vector3 moveValue = new (direction.x, 0f, 0f);
+        Vector3 moveValue = new Vector3(direction.x, 0, 0);
 
-        moveValue = moveValue.x * transform.right;
+        if (moveValue.x > 0)
+        {
+            characterAnimator.SetBool("isIdle", false);
+            characterAnimator.SetBool("isWalkingRight", false);
+            characterAnimator.SetBool("isWalkingLeft", true);
+        }
+        if (moveValue.x < 0)
+        {;
+            characterAnimator.SetBool("isIdle", false);
+            characterAnimator.SetBool("isWalkingLeft", false);
+            characterAnimator.SetBool("isWalkingRight", true);
+        }
+        if (moveValue.x == 0)
+        {
+            characterAnimator.SetBool("isWalkingRight", false);
+            characterAnimator.SetBool("isWalkingLeft", false);
+            characterAnimator.SetBool("isIdle", true);
+        }
 
-        _controller.Move(moveValue.normalized * (moveSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+        moveValue = moveValue.x * transform.forward;
+        controller.Move(moveValue.normalized * (moveSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+
     }
 
     private void Slide()
     {
         Vector3 moveDirection = new Vector3(previousDirection, 0f, 0f).normalized;
         Vector3 moveValue = moveDirection * _currentSlideSpeed;
-        _controller.Move(moveValue * Time.deltaTime + Vector3.up * _verticalVelocity * Time.deltaTime);
+        controller.Move(moveValue * Time.deltaTime + Vector3.up * _verticalVelocity * Time.deltaTime);
 
         UpdateSlideSpeed();
     }
@@ -121,10 +148,40 @@ public class PlayerController : MonoBehaviour
                 _currentSlideSpeed = Mathf.MoveTowards(_currentSlideSpeed, maxSlideSpeed, acceleration * Time.deltaTime);
             }
         }
+
         else
         {
             _currentSlideSpeed = Mathf.MoveTowards(_currentSlideSpeed, 0f, deceleration * Time.deltaTime);
         }
 
+    }
+
+    public void Fall()
+    {
+        characterAnimator.SetBool("isJumping", false);
+        characterAnimator.SetBool("isFalling", true);
+    }
+
+    public void Land()
+    {
+        GroundedCheck();
+        if (grounded || onIce)
+        {
+            characterAnimator.SetBool("isJumping", false);
+            characterAnimator.SetBool("isFalling", false);
+            characterAnimator.SetBool("Landed", true);
+        }
+    }
+
+    public void TakeOff()
+    {
+        _verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
+    }
+
+    public void BackToIdle()
+    {
+        jump = false;
+        characterAnimator.SetBool("isJumping", false);
+        characterAnimator.SetBool("Landed", false);
     }
 }

@@ -29,8 +29,7 @@ public class InputReader : MonoBehaviour
 
     public void SetJump(InputAction.CallbackContext inputContext)
     {
-        if (inputContext.performed)
-            player.Jump = true;
+        player.jump = true;
     }
 
     public void TriggerHandSummon(InputAction.CallbackContext inputContext)
