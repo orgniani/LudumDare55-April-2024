@@ -42,6 +42,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Hand",
+                    "type": "Button",
+                    "id": "74fe7ccb-ba47-482e-ab9f-f9e2d2eb104b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Barrier",
                     "type": "Button",
                     "id": "2cbaaefc-53c9-439e-a8fe-5a0a07866042",
@@ -319,7 +328,7 @@
                 {
                     "name": "",
                     "id": "72b7b57d-8d5c-4e2d-bf76-0cd8641940dc",
-                    "path": "<Keyboard>/1",
+                    "path": "<Keyboard>/3",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -335,6 +344,28 @@
                     "processors": "",
                     "groups": "Gamepad;Joystick",
                     "action": "Barrier",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c33ab928-4c81-4636-b000-147f0012181f",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Hand",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "addc794b-7dcd-4d29-b9d4-38d302094983",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad;Joystick",
+                    "action": "Hand",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

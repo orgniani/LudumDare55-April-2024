@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 /*
@@ -13,7 +12,6 @@ public class SummonZone : MonoBehaviour
     [SerializeField] private SummonSpell spell;
     [Header("Settings")]
     [SerializeField] private BoxCollider zoneCollider;
-    [SerializeField] private float summonDuration = 5f;
 
     private bool _canBeSummoned;
     private SummonType _summonType = SummonType.Unassigned;
@@ -37,7 +35,6 @@ public class SummonZone : MonoBehaviour
             DisableScriptIfMissingComponent("Box Collider ('Zone Collider')");
             return;
         }
-
     }
 
     private void OnEnable()
@@ -45,7 +42,12 @@ public class SummonZone : MonoBehaviour
         _summonType = spell.GetSummonType();
     }
 
-    public bool IsSummonEnabled()
+    public void ReenableZoneForNextSummon()
+    {
+        _canBeSummoned = true;
+    }
+
+    public bool CanBeSummoned()
     {
         return _canBeSummoned;
     }
@@ -55,16 +57,8 @@ public class SummonZone : MonoBehaviour
         if (_canBeSummoned)
         {
             Debug.Log($"{name}: {_summonType} summon triggered.");
-            StartCoroutine(SummoningCoroutine());
+            spell.TriggerSummon();
         }
-    }
-
-    private IEnumerator SummoningCoroutine()
-    {
-        spell.Summon();
-        // TODO: could be replaced by waitForAnimation in SummonSpell::Summon?
-        yield return new WaitForSeconds(summonDuration);
-        spell.Dismiss();
     }
 
     private void OnTriggerEnter(Collider other)
