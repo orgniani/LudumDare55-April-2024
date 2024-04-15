@@ -34,11 +34,12 @@ public class PlayerController : MonoBehaviour
     private bool grounded = true;
     private bool onIce;
 
-    private bool jump;
+    public bool jump;
     public bool Jump { set { jump = value; } }
 
     private Vector2 direction;
     public Vector2 Direction { set { direction = value; } }
+
 
     private void Awake()
     {
@@ -79,17 +80,14 @@ public class PlayerController : MonoBehaviour
         onIce = Physics.CheckSphere(spherePosition, groundedRadius, iceLayer, QueryTriggerInteraction.Ignore);
     }
 
-    private void JumpAndGravity()
+    public void JumpAndGravity()
     {
         if ((grounded || onIce) && jump)
         {
-            _verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
             characterAnimator.SetBool("isJumping", true);
-            characterAnimator.SetBool("isIdle", false);
         }
         else
             jump = false;
-        Debug.Log(_verticalVelocity);
 
         if (_verticalVelocity < terminalVelocity)
         {
@@ -107,7 +105,7 @@ public class PlayerController : MonoBehaviour
             characterAnimator.SetBool("isWalkingLeft", true);
         }
         if (moveValue.x < 0)
-        {
+        {;
             characterAnimator.SetBool("isIdle", false);
             characterAnimator.SetBool("isWalkingLeft", false);
             characterAnimator.SetBool("isWalkingRight", true);
@@ -119,10 +117,9 @@ public class PlayerController : MonoBehaviour
             characterAnimator.SetBool("isIdle", true);
         }
 
-        moveValue = moveValue.x * transform.forward + (moveValue.z * transform.right * -1) ;
-        
-
+        moveValue = moveValue.x * transform.forward + (moveValue.z * transform.right * -1);
         controller.Move(moveValue.normalized * (moveSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+
     }
 
     private void Slide()
@@ -173,5 +170,17 @@ public class PlayerController : MonoBehaviour
             characterAnimator.SetBool("isFalling", false);
             characterAnimator.SetBool("Landed", true);
         }
+    }
+
+    public void TakeOff()
+    {
+        _verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
+    }
+
+    public void BackToIdle()
+    {
+        jump = false;
+        characterAnimator.SetBool("isJumping", false);
+        characterAnimator.SetBool("Landed", false);
     }
 }
