@@ -12,6 +12,7 @@ public class SummonZone : MonoBehaviour
     [SerializeField] private SummonSpell spell;
     [Header("Settings")]
     [SerializeField] private BoxCollider zoneCollider;
+    [SerializeField] private float totalSummonCooldown = 10f;
 
     private bool _canBeSummoned;
     private SummonType _summonType = SummonType.Unassigned;
@@ -47,9 +48,9 @@ public class SummonZone : MonoBehaviour
         _canBeSummoned = true;
     }
 
-    public bool CanBeSummoned()
+    public float GetSummonTotalDuration()
     {
-        return _canBeSummoned;
+        return totalSummonCooldown;
     }
 
     public void Summon()

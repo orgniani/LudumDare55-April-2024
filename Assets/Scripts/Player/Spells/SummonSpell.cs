@@ -16,7 +16,7 @@ public class SummonSpell : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private SummonType summonType = SummonType.Unassigned;
     [SerializeField] private Vector3 summonPosition = Vector3.zero;
-    [SerializeField] private float summonDuration = 5f;
+    [SerializeField] private float summonAvailableDuration = 5f;
 
     private SummonZone _summonZone;
 
@@ -77,7 +77,7 @@ public class SummonSpell : MonoBehaviour
         }
 
         // Wait summonDuration
-        yield return new WaitForSeconds(summonDuration);
+        yield return new WaitForSeconds(summonAvailableDuration);
         Debug.Log($"{name}: Summon duration completed.");
 
         // Dismiss
@@ -97,11 +97,6 @@ public class SummonSpell : MonoBehaviour
     public SummonType GetSummonType()
     {
         return summonType;
-    }
-
-    public void SetSummonZoneReference(SummonZone summonZone)
-    {
-        _summonZone = summonZone;
     }
 
     private void ReenableZoneForNextSummon()
