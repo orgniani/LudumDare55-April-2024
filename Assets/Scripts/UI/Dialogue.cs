@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerDialogue : MonoBehaviour
 {
     [SerializeField] private GameObject dialogueBubble;
-    [SerializeField] private Text text;
+    [SerializeField] private TMP_Text TMP_text;
     [SerializeField] private string dialogue;
     [SerializeField] private bool player;
     [SerializeField] private bool hand;
@@ -18,15 +19,15 @@ public class PlayerDialogue : MonoBehaviour
         PlayerController playerController = other.GetComponent<PlayerController>();
         if (playerController != null)
         {
-            if (dialogueBubble != null && text != null)
+            if (dialogueBubble != null && TMP_text != null)
             {
-                if (player) { text.color = Color.black; }
-                else if (hand) { text.color = Color.red; }
-                else if (water) { text.color = Color.blue; }
-                else if (barrier) { text.color = Color.green; }
-                else { text.color = Color.black; }
-                text.text = dialogue;
-                text.rectTransform.sizeDelta = new Vector2(text.rectTransform.sizeDelta.x, text.preferredHeight);
+                if (player) { TMP_text.color = Color.black; }
+                else if (hand) { TMP_text.color = Color.red; }
+                else if (water) { TMP_text.color = Color.blue; }
+                else if (barrier) { TMP_text.color = Color.green; }
+                else { TMP_text.color = Color.black; }
+                TMP_text.text = dialogue;
+                TMP_text.rectTransform.sizeDelta = new Vector2(TMP_text.rectTransform.sizeDelta.x, TMP_text.preferredHeight);
                 dialogueBubble.SetActive(true);
             }
         }
@@ -38,7 +39,7 @@ public class PlayerDialogue : MonoBehaviour
         PlayerController playerController = other.GetComponent<PlayerController>();
         if (playerController != null)
         {
-            if (dialogueBubble != null && text != null)
+            if (dialogueBubble != null && TMP_text != null)
             {
                 dialogueBubble.SetActive(false);
             }
