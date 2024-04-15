@@ -23,6 +23,6 @@ public class InputReader : MonoBehaviour
 
     public void SetJump(InputAction.CallbackContext inputContext)
     {
-        player.Jump = true;
+        player.jump = true;
     }
 }
