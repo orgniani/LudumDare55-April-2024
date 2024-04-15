@@ -873,111 +873,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1156878351872192759, guid: 87c5b39589f73c045a34223142955622,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1508575909691079826, guid: 87c5b39589f73c045a34223142955622,
         type: 3}
       propertyPath: m_Name
       value: MenuSummoning
-      objectReference: {fileID: 0}
-    - target: {fileID: 1508575909691079826, guid: 87c5b39589f73c045a34223142955622,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1532079333610474598, guid: 87c5b39589f73c045a34223142955622,
         type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1701933522}
-    - target: {fileID: 2297242544336578682, guid: 87c5b39589f73c045a34223142955622,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900880017561973434, guid: 87c5b39589f73c045a34223142955622,
-        type: 3}
-      propertyPath: type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900880017561973434, guid: 87c5b39589f73c045a34223142955622,
-        type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 1445756111}
     - target: {fileID: 3900880017561973434, guid: 87c5b39589f73c045a34223142955622,
         type: 3}
       propertyPath: inputReader
       value: 
       objectReference: {fileID: 402572169}
-    - target: {fileID: 3900880017561973434, guid: 87c5b39589f73c045a34223142955622,
-        type: 3}
-      propertyPath: hasWonValue.y
-      value: 110.37
-      objectReference: {fileID: 0}
-    - target: {fileID: 4235452403838307057, guid: 87c5b39589f73c045a34223142955622,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4317119671371084464, guid: 87c5b39589f73c045a34223142955622,
         type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 512867717}
-    - target: {fileID: 5568971398657164674, guid: 87c5b39589f73c045a34223142955622,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6730467909297752806, guid: 87c5b39589f73c045a34223142955622,
-        type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 1445756111}
     - target: {fileID: 6730467909297752806, guid: 87c5b39589f73c045a34223142955622,
         type: 3}
       propertyPath: inputReader
       value: 
       objectReference: {fileID: 402572169}
-    - target: {fileID: 6730467909297752806, guid: 87c5b39589f73c045a34223142955622,
-        type: 3}
-      propertyPath: hasWonValue.y
-      value: 169.42
-      objectReference: {fileID: 0}
-    - target: {fileID: 6744646793108689931, guid: 87c5b39589f73c045a34223142955622,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7738396874857007055, guid: 87c5b39589f73c045a34223142955622,
-        type: 3}
-      propertyPath: type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7738396874857007055, guid: 87c5b39589f73c045a34223142955622,
-        type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 1445756111}
     - target: {fileID: 7738396874857007055, guid: 87c5b39589f73c045a34223142955622,
         type: 3}
       propertyPath: inputReader
       value: 
       objectReference: {fileID: 402572169}
-    - target: {fileID: 7738396874857007055, guid: 87c5b39589f73c045a34223142955622,
-        type: 3}
-      propertyPath: hasWonValue.y
-      value: -44.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8884432087462365355, guid: 87c5b39589f73c045a34223142955622,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1482,12 +1407,6 @@ CanvasRenderer:
 --- !u!1 &1445756110 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1508575909691079826, guid: 87c5b39589f73c045a34223142955622,
-    type: 3}
-  m_PrefabInstance: {fileID: 796256865}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1445756111 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7886789815743155485, guid: 87c5b39589f73c045a34223142955622,
     type: 3}
   m_PrefabInstance: {fileID: 796256865}
   m_PrefabAsset: {fileID: 0}

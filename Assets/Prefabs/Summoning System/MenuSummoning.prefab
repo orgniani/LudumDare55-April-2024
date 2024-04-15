@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &810624884080826655
 Transform:
   m_ObjectHideFlags: 0
@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 6950304627249461091}
   - component: {fileID: 7426249833191274755}
   - component: {fileID: 6563220770783315114}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -321,7 +321,7 @@ GameObject:
   - component: {fileID: 1532079333610474598}
   - component: {fileID: 1222076319209846524}
   - component: {fileID: 8319617917278107806}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Background Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -534,6 +534,31 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.AudioSource, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1264900451382096286, guid: dabb2803c216c6842ace2a5058d42d8d,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 7886789815743155485}
+    - target: {fileID: 1264900451382096286, guid: dabb2803c216c6842ace2a5058d42d8d,
+        type: 3}
+      propertyPath: hasWonValue.y
+      value: 169.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850486437929811127, guid: dabb2803c216c6842ace2a5058d42d8d,
+        type: 3}
+      propertyPath: type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850486437929811127, guid: dabb2803c216c6842ace2a5058d42d8d,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 7886789815743155485}
+    - target: {fileID: 2850486437929811127, guid: dabb2803c216c6842ace2a5058d42d8d,
+        type: 3}
+      propertyPath: hasWonValue.y
+      value: -44.6
+      objectReference: {fileID: 0}
     - target: {fileID: 3353706141199783336, guid: dabb2803c216c6842ace2a5058d42d8d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -548,6 +573,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.AudioSource, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4008607516706567123, guid: dabb2803c216c6842ace2a5058d42d8d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5376945268149474398, guid: dabb2803c216c6842ace2a5058d42d8d,
         type: 3}
@@ -568,6 +598,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.AudioSource, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8847335832071489986, guid: dabb2803c216c6842ace2a5058d42d8d,
+        type: 3}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8847335832071489986, guid: dabb2803c216c6842ace2a5058d42d8d,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 7886789815743155485}
+    - target: {fileID: 8847335832071489986, guid: dabb2803c216c6842ace2a5058d42d8d,
+        type: 3}
+      propertyPath: hasWonValue.y
+      value: 110.37
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
