@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
     private void GroundedCheck()
     {
-        Vector3 spherePosition = new(transform.position.x, transform.position.y - groundedOffset, 0f);
+        Vector3 spherePosition = new(transform.position.x, transform.position.y - groundedOffset, transform.position.z);
         grounded = Physics.CheckSphere(spherePosition, groundedRadius, groundLayers, QueryTriggerInteraction.Ignore);
     }
 

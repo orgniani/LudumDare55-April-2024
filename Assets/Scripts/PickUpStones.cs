@@ -5,17 +5,23 @@ using UnityEngine.UI;
 
 public class PickUpStones : MonoBehaviour
 {
-    [SerializeField] private GameObject ui;
+    [SerializeField] private GameObject stonesUI;
     [SerializeField] private GameObject stones;
+    [SerializeField] private GameObject earthquake;
 
+    private MainManager mainManager;
     private bool ePressed = false;
 
+    private void Awake()
+    {
+        mainManager = FindAnyObjectByType<MainManager>();
+    }
     private void OnTriggerEnter(Collider other)
     {
         PlayerController playerController = other.GetComponent<PlayerController>();
-        if (playerController != null && ui != null)
+        if (playerController != null && stonesUI != null)
         {
-            ui.SetActive(true);
+            stonesUI.SetActive(true);
             StartCoroutine(WaitForInput());
         }  
     }
@@ -23,9 +29,9 @@ public class PickUpStones : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         PlayerController playerController = other.GetComponent<PlayerController>();
-        if (playerController != null && ui != null)
+        if (playerController != null && stonesUI != null)
         {
-            ui.SetActive(false);
+            stonesUI.SetActive(false);
             StopCoroutine(WaitForInput());
         }
     }
@@ -38,6 +44,8 @@ public class PickUpStones : MonoBehaviour
             yield return null;
         }
         Destroy(stones);
+        if (mainManager != null) { mainManager.hasStones = true; }
+        if (earthquake != null) { earthquake.SetActive(true); }
         
     }
 }
