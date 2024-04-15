@@ -12,12 +12,13 @@ public class IceBoy : MonoBehaviour
 
     private Collider coll;
     private Renderer render;
+    private bool waterHit = false;
 
     private void Awake()
     {
         render = GetComponent<Renderer>();
         coll = GetComponent<Collider>();
-        coll.enabled = false;
+        coll.isTrigger = true;
 
         if (!render)
         {
@@ -36,12 +37,20 @@ public class IceBoy : MonoBehaviour
 
     private IEnumerator WaitToFreeze()
     {
-        tail.SetActive(true);
-
         yield return new WaitForSeconds(waitToFreeze);
 
-        coll.enabled = true;
+        coll.isTrigger = false;
         render.material = iceMaterial;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Collision");
+        if (other.CompareTag("DemonTail") && !waterHit)
+        {
+            waterHit = true;
+            FreezeWater();
+            Debug.Log("Frozen");
+        }
+    }
 }
