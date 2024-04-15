@@ -11,12 +11,12 @@ public class SummonSpell : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
     [Header("View")]
-    [SerializeField] private SummonView summonView;
-    [SerializeField] private float animationDuration = 2.5f;
+    [SerializeField] protected SummonView summonView;
+    [SerializeField] protected float animationDuration = 2.5f;
     [Header("Settings")]
     [SerializeField] private SummonType summonType = SummonType.Unassigned;
     [SerializeField] private Vector3 summonPosition = Vector3.zero;
-    [SerializeField] private float summonAvailableDuration = 5f;
+    [SerializeField] protected float summonAvailableDuration = 5f;
 
     private SummonZone _summonZone;
 
@@ -59,7 +59,7 @@ public class SummonSpell : MonoBehaviour
         }
     }
 
-    public void TriggerSummon()
+    public virtual void TriggerSummon()
     {
         gameObject.SetActive(true);
         Debug.Log($"{name}: SummonSpell enabled.");
@@ -99,7 +99,7 @@ public class SummonSpell : MonoBehaviour
         return summonType;
     }
 
-    private void ReenableZoneForNextSummon()
+    protected void ReenableZoneForNextSummon()
     {
         if (_summonZone != null)
         {

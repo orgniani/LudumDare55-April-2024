@@ -51,6 +51,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Tail",
+                    "type": "Button",
+                    "id": "015ac1c6-e22e-499e-8743-205a473ee1c6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Barrier",
                     "type": "Button",
                     "id": "2cbaaefc-53c9-439e-a8fe-5a0a07866042",
@@ -366,6 +375,28 @@
                     "processors": "",
                     "groups": "Gamepad;Joystick",
                     "action": "Hand",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1dfc43c3-8054-48ae-931a-c0f2f139302c",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Tail",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d841c865-2aad-4da5-8570-f62645db499b",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad;Joystick",
+                    "action": "Tail",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
