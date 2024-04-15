@@ -36,19 +36,19 @@ public class InputReader : MonoBehaviour
     public void TriggerHandSummon(InputAction.CallbackContext inputContext)
     {
         if (inputContext.performed)
-            playerManager.TriggerSummon(SummonType.Hand);
+            playerManager.OpenSummoningMenu(SummonType.Hand);
     }
 
     public void TriggerIceSummon(InputAction.CallbackContext inputContext)
     {
         if (inputContext.performed)
-            playerManager.TriggerSummon(SummonType.Ice);
+            playerManager.OpenSummoningMenu(SummonType.Ice);
     }
 
     public void TriggerBarrierSummon(InputAction.CallbackContext inputContext)
     {
         if(inputContext.performed)
-            playerManager.TriggerSummon(SummonType.Barrier);
+            playerManager.OpenSummoningMenu(SummonType.Barrier);
     }
 
     private void DisableScriptIfMissingComponent(string missingRefName)
