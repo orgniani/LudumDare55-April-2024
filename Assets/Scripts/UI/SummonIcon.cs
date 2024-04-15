@@ -43,15 +43,13 @@ public class SummonIcon : MonoBehaviour
 
     public void ShowCooldown(float cooldownTime)
     {
-        Debug.Log($"{name}: Cooldown slider was summoned!");
+        Debug.Log($"{name}: ShowCooldown was triggered, cooldownTime is {cooldownTime}.");
         cooldownOverlay.gameObject.SetActive(true);
-        Debug.Log($"{name}: cooldownOverlay was enabled!");
         StartCoroutine(FillImageWithTime(cooldownTime));
     }
 
     private IEnumerator FillImageWithTime(float cooldownTime)
     {
-        Debug.Log($"{name}: FillImageWithTime coroutine was called! cooldownTime is {cooldownTime}");
         while (_currentCooldownTime < cooldownTime)
         {
             _currentCooldownTime += Time.deltaTime;
@@ -59,7 +57,6 @@ public class SummonIcon : MonoBehaviour
             yield return null;
         }
 
-        Debug.Log($"{name}: _currentCooldownTime is {_currentCooldownTime}, cooldownTime is {cooldownTime}");
         cooldownOverlay.gameObject.SetActive(false);
         _currentCooldownTime = 0f;
         Debug.Log($"{name}: cooldownOverlay is disabled!");
@@ -69,11 +66,6 @@ public class SummonIcon : MonoBehaviour
     public SummonType GetSummonType()
     {
         return summonType;
-    }
-
-    public Image GetImage()
-    {
-        return summonIcon;
     }
     
     public void SetIsZoneActive(bool isZoneActive)

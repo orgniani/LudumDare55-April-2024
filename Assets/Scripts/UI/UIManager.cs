@@ -51,10 +51,9 @@ public class UIManager : MonoBehaviour
 
     public void TriggerIconCooldownOverlay(SummonType summonTypeInCooldown, float cooldownTime)
     {
-        Debug.Log($"{name}: Trigger cooldown for type {summonTypeInCooldown} with cooldownTime {cooldownTime}");
+        Debug.Log($"{name}: Trigger cooldown for type {summonTypeInCooldown} with cooldownTime {cooldownTime}.");
         if(_iconsByType.TryGetValue(summonTypeInCooldown, out SummonIcon iconInCooldown) && _playerHasSpiritStones)
         {
-            Debug.Log($"{name}: cooldown icon found in _iconsByType!");
             iconInCooldown.ShowCooldown(cooldownTime);
         }
     }

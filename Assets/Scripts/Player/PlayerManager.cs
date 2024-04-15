@@ -46,7 +46,7 @@ public class PlayerManager : MonoBehaviour
             activeZone.Summon();
         } else
         {
-            Debug.Log($"{name}: Can't trigger summon, current cooldown is {_currentCooldown}");
+            Debug.Log($"{name}: Can't trigger summon. _currentCooldown is {_currentCooldown}, playerHasSpiritStones is {playerHasSpiritStones}");
         }
     }
 }
