@@ -6,7 +6,6 @@ public class IceBoy : MonoBehaviour
 {
     [SerializeField] private Material waterMaterial;
     [SerializeField] private Material iceMaterial;
-    [SerializeField] private GameObject tail;
 
     [SerializeField] private float waitToFreeze;
 
@@ -45,12 +44,10 @@ public class IceBoy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collision");
         if (other.CompareTag("DemonTail") && !waterHit)
         {
             waterHit = true;
             FreezeWater();
-            Debug.Log("Frozen");
         }
     }
 }

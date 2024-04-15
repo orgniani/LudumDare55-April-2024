@@ -55,6 +55,7 @@ public class Input_Spells : MonoBehaviour
         if (manager.hasStones && manager.inWaterZone && !waterTime.gameObject.activeSelf )
         {
             waterTime.gameObject.SetActive(true);
+            Water.gameObject.SetActive(true);
         }
     }
     private void Barrier_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
