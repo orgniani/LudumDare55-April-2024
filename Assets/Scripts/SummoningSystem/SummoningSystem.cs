@@ -51,7 +51,7 @@ public class SummoningSystem : MonoBehaviour
                 //Debug.Log("ALL POSITIONS SO FAR: " + addAllPos);
 
                 ResetState();
-
+                Debug.Log("CheckIFWOn");
                 PuzzleWonCheck();
             }
         }

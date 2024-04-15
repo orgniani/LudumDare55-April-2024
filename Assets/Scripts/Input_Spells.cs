@@ -14,6 +14,11 @@ public class Input_Spells : MonoBehaviour
     public GameObject Water;
     public GameObject Barrier;
 
+    public GameObject SummoningMenu;
+    public GameObject handCanvas;
+    public GameObject waterCanvas;
+    public GameObject barrierCanvas;
+
     private Spells spells;
     private MainManager manager;
 
@@ -46,6 +51,8 @@ public class Input_Spells : MonoBehaviour
     {
         if (manager.hasStones && manager.inHandZone && !handTime.gameObject.activeSelf)
         {
+            SummoningMenu.gameObject.SetActive(true);
+            handCanvas.gameObject.SetActive(true);
             handTime.gameObject.SetActive(true);
             Hand.gameObject.SetActive(true);
         }
@@ -54,15 +61,21 @@ public class Input_Spells : MonoBehaviour
     {
         if (manager.hasStones && manager.inWaterZone && !waterTime.gameObject.activeSelf )
         {
+            SummoningMenu.gameObject.SetActive(true);
+            waterCanvas.gameObject.SetActive(true);
             waterTime.gameObject.SetActive(true);
             Water.gameObject.SetActive(true);
+            
         }
     }
     private void Barrier_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         if (manager.hasStones && manager.inBarrierZone && !barrierTime.gameObject.activeSelf)
         {
+            SummoningMenu.gameObject.SetActive(true);
+            barrierCanvas.gameObject.SetActive(true);
             barrierTime.gameObject.SetActive(true);
+            Barrier.gameObject.SetActive(true);
         }
     }
 }
