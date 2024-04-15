@@ -18,22 +18,22 @@ public class PickUpStones : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        PlayerController playerController = other.GetComponent<PlayerController>();
+        /*PlayerController playerController = other.GetComponent<PlayerController>();
         if (playerController != null && stonesUI != null)
         {
             stonesUI.SetActive(true);
             StartCoroutine(WaitForInput());
-        }  
+        }  */
     }
 
     private void OnTriggerExit(Collider other)
     {
-        PlayerController playerController = other.GetComponent<PlayerController>();
+       /* PlayerController playerController = other.GetComponent<PlayerController>();
         if (playerController != null && stonesUI != null)
         {
             stonesUI.SetActive(false);
             StopCoroutine(WaitForInput());
-        }
+        }*/
     }
 
     IEnumerator WaitForInput()
