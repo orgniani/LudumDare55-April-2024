@@ -8,32 +8,31 @@ public class PickUpStones : MonoBehaviour
     [SerializeField] private GameObject stonesUI;
     [SerializeField] private GameObject stones;
     [SerializeField] private GameObject earthquake;
+    [SerializeField] private PlayerManager playerManager;
 
-    private MainManager mainManager;
+    [SerializeField] private GameObject redStone;
+    [SerializeField] private GameObject greenStone;
+    [SerializeField] private GameObject blueStone;
+
     private bool ePressed = false;
 
-    private void Awake()
-    {
-        mainManager = FindAnyObjectByType<MainManager>();
-    }
     private void OnTriggerEnter(Collider other)
     {
-        /*PlayerController playerController = other.GetComponent<PlayerController>();
+        PlayerController playerController = other.GetComponent<PlayerController>();
         if (playerController != null && stonesUI != null)
         {
-            stonesUI.SetActive(true);
             StartCoroutine(WaitForInput());
-        }  */
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-       /* PlayerController playerController = other.GetComponent<PlayerController>();
+        PlayerController playerController = other.GetComponent<PlayerController>();
         if (playerController != null && stonesUI != null)
         {
             stonesUI.SetActive(false);
             StopCoroutine(WaitForInput());
-        }*/
+        }
     }
 
     IEnumerator WaitForInput()
@@ -44,7 +43,13 @@ public class PickUpStones : MonoBehaviour
             yield return null;
         }
         Destroy(stones);
-        if (mainManager != null) { mainManager.hasStones = true; }
+
+        redStone.SetActive(true);
+        greenStone.SetActive(true);
+        blueStone.SetActive(true);
+        stonesUI.SetActive(true);
+
+        if (playerManager != null) { playerManager.SetPlayerHasSpiritStones(true); }
         if (earthquake != null) { earthquake.SetActive(true); }
         
     }
