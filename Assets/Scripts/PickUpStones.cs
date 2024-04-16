@@ -21,6 +21,7 @@ public class PickUpStones : MonoBehaviour
         PlayerController playerController = other.GetComponent<PlayerController>();
         if (playerController != null && stonesUI != null)
         {
+            stonesUI.SetActive(true);
             StartCoroutine(WaitForInput());
         }
     }
